@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<robot name="EchoBot" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <!-- == Material == -->
+  <material name="body_color">
+    <color rgba="0.3 0.3 0.3 1"/>
+  </material>
+
+  <link name="Body">
+    <visual>
+      <origin rpy="0 0 0"/>
+      <material name="body_color"/>
+      <geometry>
+        <mesh filename="package://echo_bot_description/meshes/STL/body.stl"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://echo_bot_description/meshes/STL/body.stl"/>
+      </geometry>      
+    </collision>
+    <inertial>
+      <mass value="1e-06" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
+    </inertial>
+  </link>
+
+</robot>

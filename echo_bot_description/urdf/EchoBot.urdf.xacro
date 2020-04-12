@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<robot name="EchoBot" xmlns:xacro="http://ros.org/wiki/xacro">
+  
+  <!-- == EchoBot base == -->
+  <xacro:include filename="$(find echo_bot_description)/urdf/EchoBot_base.urdf.xacro"/>
+  
+  <!-- == Sensor == -->
+  <!-- <xacro:include filename="$(find echo_bot_description)/urdf/SENSOR.urdf.xacro"/> -->
+  
+</robot>
