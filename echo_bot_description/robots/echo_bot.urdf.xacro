@@ -19,7 +19,7 @@
   </xacro:left_leg_v0>
 
   <!-- == left_wheel == -->
-  <xacro:wheel_v0 prefix="left" parent="lower_leg_L">
+  <xacro:wheel_v0 prefix="left" parent="lower_leg_left">
     <origin xyz="0.1 0.0305 0.0" rpy="${-M_PI/2} 0.0 0.0"/>
     <axis xyz="0 0 1"/>
   </xacro:wheel_v0>

@@ -10,7 +10,6 @@ Panels:
         - /TF1
         - /TF1/Frames1
         - /RobotModel1
-        - /RobotModel1/Links1
         - /RobotModel1/Links1/base_footprint1
       Splitter Ratio: 0.3836589753627777
     Tree Height: 728
@@ -67,13 +66,13 @@ Visualization Manager:
           Value: true
         base_link:
           Value: true
-        lower_leg_L:
+        lower_leg_left:
           Value: false
-        upper_leg_L:
+        upper_leg_left:
           Value: false
-        upper_side_leg_L:
+        upper_side_leg_left:
           Value: false
-        wheel_left:
+        wheel_left_link:
           Value: true
       Marker Scale: 1
       Name: TF
@@ -83,11 +82,11 @@ Visualization Manager:
       Tree:
         base_footprint:
           base_link:
-            upper_leg_L:
-              lower_leg_L:
-                upper_side_leg_L:
+            upper_leg_left:
+              lower_leg_left:
+                upper_side_leg_left:
                   {}
-                wheel_left:
+                wheel_left_link:
                   {}
       Update Interval: 0
       Value: true
@@ -110,22 +109,22 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        lower_leg_L:
+        lower_leg_left:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        upper_leg_L:
+        upper_leg_left:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        upper_side_leg_L:
+        upper_side_leg_left:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        wheel_left:
+        wheel_left_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -179,10 +178,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.3103984594345093
+      Pitch: 0.2603984475135803
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 0.7903903722763062
+      Yaw: 0.7203909158706665
     Saved: ~
 Window Geometry:
   Displays:

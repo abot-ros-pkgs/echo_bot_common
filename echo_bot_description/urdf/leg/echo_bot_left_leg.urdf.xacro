@@ -1,5 +1,7 @@
 <?xml version="1.0"?>
-<robot name="echo_bot" xmlns:xacro="http://ros.org/wiki/xacro">
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find echo_bot_description)/urdf/leg/echo_bot_left_leg.gazebo.xacro"/>
 
   <!-- == Material == -->
   <material name="leg_color_0">
@@ -7,92 +9,92 @@
   </material>
 
   <xacro:macro name="left_leg_v0" params="parent *joint_origin">
-  <!-- Link -->
-  <link name="upper_leg_L">
-    <visual>
-      <origin rpy="0 0 0"/>
-      <material name="leg_color_0"/>
-      <geometry>
-        <mesh filename="package://echo_bot_description/meshes/STL/upper_leg.stl"/>
-      </geometry>
-    </visual>
-    <collision>
-      <origin rpy="0 0 0"/>
-      <geometry>
-        <mesh filename="package://echo_bot_description/meshes/STL/upper_leg.stl"/>
-      </geometry>      
-    </collision>
-    <inertial>
-      <mass value="13.25" />
-      <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
-      <inertia ixx="0.2015" ixy="0.0" ixz="0.0" iyy="0.265" iyz="0.0" izz="0.2015" />
-    </inertial>
-  </link>
-  <link name="lower_leg_L">
-    <visual>
-      <origin rpy="0 0 0"/>
-      <material name="leg_color_0"/>
-      <geometry>
-        <mesh filename="package://echo_bot_description/meshes/STL/lower_leg.stl"/>
-      </geometry>
-    </visual>
-    <collision>
-      <origin rpy="0 0 0"/>
-      <geometry>
-        <mesh filename="package://echo_bot_description/meshes/STL/lower_leg.stl"/>
-      </geometry>      
-    </collision>
-    <inertial>
-      <mass value="13.25" />
-      <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
-      <inertia ixx="0.2015" ixy="0.0" ixz="0.0" iyy="0.265" iyz="0.0" izz="0.2015" />
-    </inertial>
-  </link>
-  <link name="upper_side_leg_L">
-    <visual>
-      <origin rpy="0 0 0"/>
-      <material name="leg_color_0"/>
-      <geometry>
-        <mesh filename="package://echo_bot_description/meshes/STL/upper_side_leg.stl"/>
-      </geometry>
-    </visual>
-    <collision>
-      <origin rpy="0 0 0"/>
-      <geometry>
-        <mesh filename="package://echo_bot_description/meshes/STL/upper_side_leg.stl"/>
-      </geometry>      
-    </collision>
-    <inertial>
-      <mass value="13.25" />
-      <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
-      <inertia ixx="0.2015" ixy="0.0" ixz="0.0" iyy="0.265" iyz="0.0" izz="0.2015" />
-    </inertial>
-  </link>
+    <!-- Link -->
+    <link name="upper_leg_left">
+      <visual>
+        <origin rpy="0 0 0"/>
+        <material name="leg_color_0"/>
+        <geometry>
+          <mesh filename="package://echo_bot_description/meshes/STL/upper_leg.stl"/>
+        </geometry>
+      </visual>
+      <collision>
+        <origin rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://echo_bot_description/meshes/DAE/upper_leg.dae"/>
+        </geometry>      
+      </collision>
+      <inertial>
+        <mass value="13.25" />
+        <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+        <inertia ixx="0.2015" ixy="0.0" ixz="0.0" iyy="0.265" iyz="0.0" izz="0.2015" />
+      </inertial>
+    </link>
+    <link name="lower_leg_left">
+      <visual>
+        <origin rpy="0 0 0"/>
+        <material name="leg_color_0"/>
+        <geometry>
+          <mesh filename="package://echo_bot_description/meshes/STL/lower_leg.stl"/>
+        </geometry>
+      </visual>
+      <collision>
+        <origin rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://echo_bot_description/meshes/DAE/lower_leg.dae"/>
+        </geometry>      
+      </collision>
+      <inertial>
+        <mass value="13.25" />
+        <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+        <inertia ixx="0.2015" ixy="0.0" ixz="0.0" iyy="0.265" iyz="0.0" izz="0.2015" />
+      </inertial>
+    </link>
+    <link name="upper_side_leg_left">
+      <visual>
+        <origin rpy="0 0 0"/>
+        <material name="leg_color_0"/>
+        <geometry>
+          <mesh filename="package://echo_bot_description/meshes/STL/upper_side_leg.stl"/>
+        </geometry>
+      </visual>
+      <collision>
+        <origin rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://echo_bot_description/meshes/DAE/upper_side_leg.dae"/>
+        </geometry>      
+      </collision>
+      <inertial>
+        <mass value="13.25" />
+        <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+        <inertia ixx="0.2015" ixy="0.0" ixz="0.0" iyy="0.265" iyz="0.0" izz="0.2015" />
+      </inertial>
+    </link>
 
-  <!-- Joint -->
-  <joint name="upper_leg_L" type="revolute">
-    <insert_block name="joint_origin"/>
-    <parent link="${parent}" />
-    <child link="upper_leg_L" />
-    <axis xyz="0 1 0"/>
-    <limit lower="0.0" upper="${-M_PI*30/180}" effort="0" velocity="0"/>
-  </joint>
-  <joint name="lower_leg_L" type="revolute">
-    <origin xyz="0.1 0.0 0.0" rpy="0.0 ${-M_PI*144.47/180} 0.0" />
-    <parent link="upper_leg_L" />
-    <child link="lower_leg_L" />
-    <axis xyz="0 1 0"/>
-    <limit lower="0.0" upper="${M_PI*66.73/180}" effort="0" velocity="0"/>
-    <mimic joint="upper_leg_L" multiplier="-2.186" offset="-0.02025"/>
-  </joint>
-  <joint name="upper_side_leg_L" type="revolute">
-    <origin xyz="-0.025 0.0 0.0" rpy="0.0 ${-M_PI*54.22/180} 0.0" />
-    <parent link="lower_leg_L" />
-    <child link="upper_side_leg_L" />
-    <axis xyz="0 1 0"/>
-    <limit lower="0.0" upper="${-M_PI*64.73/180}" effort="0" velocity="0"/>
-    <mimic joint="upper_leg_L" multiplier="2.123937" offset="0.003625"/>
-  </joint>
+    <!-- Joint -->
+    <joint name="upper_leg_left" type="revolute">
+      <insert_block name="joint_origin"/>
+      <parent link="${parent}" />
+      <child link="upper_leg_left" />
+      <axis xyz="0 1 0"/>
+      <limit lower="0.0" upper="${-M_PI*30/180}" effort="0" velocity="0"/>
+    </joint>
+    <joint name="lower_leg_left" type="revolute">
+      <origin xyz="0.1 0.0 0.0" rpy="0.0 ${-M_PI*144.47/180} 0.0" />
+      <parent link="upper_leg_left" />
+      <child link="lower_leg_left" />
+      <axis xyz="0 1 0"/>
+      <limit lower="0.0" upper="${M_PI*66.73/180}" effort="0" velocity="0"/>
+      <mimic joint="upper_leg_left" multiplier="-2.186" offset="-0.02025"/>
+    </joint>
+    <joint name="upper_side_leg_left" type="revolute">
+      <origin xyz="-0.025 0.0 0.0" rpy="0.0 ${-M_PI*54.22/180} 0.0" />
+      <parent link="lower_leg_left" />
+      <child link="upper_side_leg_left" />
+      <axis xyz="0 1 0"/>
+      <limit lower="0.0" upper="${-M_PI*64.73/180}" effort="0" velocity="0"/>
+      <mimic joint="upper_leg_left" multiplier="2.123937" offset="0.003625"/>
+    </joint>
   </xacro:macro>
 
 </robot>

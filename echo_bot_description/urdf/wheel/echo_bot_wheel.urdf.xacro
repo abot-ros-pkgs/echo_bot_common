@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<robot name="echo_bot" xmlns:xacro="http://ros.org/wiki/xacro">
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
 
 <xacro:include filename="$(find echo_bot_description)/urdf/wheel/echo_bot_wheel.transmission.xacro"/>
 <xacro:include filename="$(find echo_bot_description)/urdf/wheel/echo_bot_wheel.gazebo.xacro"/>
@@ -10,7 +10,7 @@
   </material>
 
   <xacro:macro name="wheel_v0" params="prefix parent *joint_origin *joint_axis">
-    <link name="wheel_${prefix}">
+    <link name="wheel_${prefix}_link">
       <visual>
         <origin rpy="0 0 0"/>
         <material name="wheel_color"/>
@@ -21,7 +21,7 @@
       <collision>
         <origin rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://echo_bot_description/meshes/STL/tyre.stl"/>
+          <mesh filename="package://echo_bot_description/meshes/DAE/tyre.dae"/>
         </geometry>      
       </collision>
       <inertial>
@@ -31,10 +31,10 @@
       </inertial>
     </link>
 
-    <joint name="wheel_${prefix}" type="continuous">
+    <joint name="wheel_${prefix}_joint" type="continuous">
       <insert_block name="joint_origin"/>
       <parent link="${parent}" />
-      <child link="wheel_${prefix}"/>
+      <child link="wheel_${prefix}_link"/>
       <insert_block name="joint_axis"/>
     </joint>
   </xacro:macro>
