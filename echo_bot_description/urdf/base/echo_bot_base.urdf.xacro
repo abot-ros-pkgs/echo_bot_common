@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<robot name="echo_bot" xmlns:xacro="http://ros.org/wiki/xacro">
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
 
   <!-- == Material == -->
   <material name="base_color">
@@ -20,7 +20,7 @@
       <collision>
         <origin rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://echo_bot_description/meshes/STL/body.stl"/>
+          <mesh filename="package://echo_bot_description/meshes/DAE/body.dae"/>
         </geometry>      
       </collision>
       <inertial>
