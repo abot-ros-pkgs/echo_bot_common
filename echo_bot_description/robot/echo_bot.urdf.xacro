@@ -10,7 +10,7 @@
   <!-- == Gazebo == -->
   <gazebo>
     <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-      <robotNamespace>fourth_robot</robotNamespace>
+      <robotNamespace>echo_bot</robotNamespace>
     </plugin>
   </gazebo>
 
