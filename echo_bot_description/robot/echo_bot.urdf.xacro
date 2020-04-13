@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<robot name="echo_bot" xmlns:xacro="http://ros.org/wiki/xacro">
+  
+  <!-- == echo_bot base == -->
+  <xacro:include filename="$(find echo_bot_description)/urdf/echo_bot_base.urdf.xacro"/>
+  
+  <!-- == Sensor == -->
+  <!-- <xacro:include filename="$(find echo_bot_description)/urdf/SENSOR.urdf.xacro"/> -->
+
+  <!-- == Gazebo == -->
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>fourth_robot</robotNamespace>
+    </plugin>
+  </gazebo>
+
+  <!-- Base -->
+  <xacro:base_gazebo_v0/>
+
+  <!-- Wheel -->
+  <xacro:wheel_gazebo_v0 prefix="right"/>
+  <xacro:wheel_gazebo_v0 prefix="left"/>
+  <!-- <xacro:wheel_gazebo_control_v0 rate="25"/> -->
+
+  
+</robot>

@@ -1,5 +1,5 @@
 <launch>
-  <arg name="model" default="$(find echo_bot_description)/robot/EchoBot.urdf.xacro"/>
+  <arg name="model" default="$(find echo_bot_description)/robot/echo_bot.urdf.xacro"/>
 
   <arg name="gui" default="True" />
   <arg name="rviz_config" default="$(find echo_bot_description)/launch/config/display.rviz"/>

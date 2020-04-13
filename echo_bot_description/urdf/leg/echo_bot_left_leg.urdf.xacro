@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<robot name="EchoBot" xmlns:xacro="http://ros.org/wiki/xacro">
+<robot name="echo_bot" xmlns:xacro="http://ros.org/wiki/xacro">
 
   <!-- == Material == -->
   <material name="leg_color_0">
@@ -94,13 +94,14 @@
     <mimic joint="upper_leg_R" multiplier="2.123937" offset="0.003625"/>
   </joint>
 
-  <xacro:include filename="$(find echo_bot_description)/urdf/wheel/EchoBot_wheel.urdf.xacro"/>
-  <xacro:include filename="$(find echo_bot_description)/urdf/wheel/EchoBot_wheel.transmission.xacro"/>
-  <xacro:include filename="$(find echo_bot_description)/urdf/wheel/EchoBot_wheel.gazebo.xacro"/>
+  <xacro:include filename="$(find echo_bot_description)/urdf/wheel/echo_bot_wheel.urdf.xacro"/>
 
   <xacro:wheel_v0 prefix="left" parent="lower_leg_R">
     <origin xyz="0.1 0.0305 0.0" rpy="${-M_PI/2} 0.0 0.0"/>
     <axis xyz="0 0 1"/>
   </xacro:wheel_v0>
+
+  <!-- Transmission -->
+  <xacro:wheel_trans_v0 prefix="right"/>
 
 </robot>

@@ -1,5 +1,8 @@
 <?xml version="1.0"?>
-<robot name="EchoBot" xmlns:xacro="http://ros.org/wiki/xacro">
+<robot name="echo_bot" xmlns:xacro="http://ros.org/wiki/xacro">
+
+<xacro:include filename="$(find echo_bot_description)/urdf/wheel/echo_bot_wheel.transmission.xacro"/>
+<xacro:include filename="$(find echo_bot_description)/urdf/wheel/echo_bot_wheel.gazebo.xacro"/>
 
   <!-- == Material == -->
   <material name="wheel_color">

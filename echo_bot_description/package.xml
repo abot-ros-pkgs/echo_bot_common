@@ -2,7 +2,7 @@
 <package format="2">
   <name>echo_bot_description</name>
   <version>0.0.1</version>
-  <description>The EchoBot description package</description>
+  <description>The echo_bot description package</description>
 
   <maintainer email="kuwano.tomohiro455@mail.kyutech.jp">calm0815</maintainer>
   <license>MIT</license>

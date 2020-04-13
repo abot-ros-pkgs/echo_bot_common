@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<robot name="EchoBot" xmlns:xacro="http://ros.org/wiki/xacro">
+<robot name="echo_bot" xmlns:xacro="http://ros.org/wiki/xacro">
 
   <xacro:include filename="$(find echo_bot_description)/urdf/common.xacro"/>
 
@@ -12,12 +12,12 @@
   </joint>
 
   <!-- == Body == -->
-  <xacro:include filename="$(find echo_bot_description)/urdf/body/EchoBot_body.urdf.xacro"/>
+  <xacro:include filename="$(find echo_bot_description)/urdf/body/echo_bot_body.urdf.xacro"/>
 
   <!-- == left_leg == -->
-  <xacro:include filename="$(find echo_bot_description)/urdf/leg/EchoBot_left_leg.urdf.xacro"/>
+  <xacro:include filename="$(find echo_bot_description)/urdf/leg/echo_bot_left_leg.urdf.xacro"/>
 
   <!-- == right_leg == -->
-  <!-- <xacro:include filename="$(find echo_bot_description)/urdf/leg/EchoBot_right_leg.urdf.xacro"/> -->
+  <!-- <xacro:include filename="$(find echo_bot_description)/urdf/leg/echo_bot_right_leg.urdf.xacro"/> -->
 
 </robot>

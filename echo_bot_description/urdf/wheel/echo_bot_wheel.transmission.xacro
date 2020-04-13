@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<robot name="EchoBot" xmlns:xacro="http://ros.org/wiki/xacro">
+<robot name="echo_bot" xmlns:xacro="http://ros.org/wiki/xacro">
 
   <xacro:macro name="joint_position_trans_v0" params="prefix">
     <transmission name="${prefix}_trans">
