@@ -30,7 +30,7 @@
     <collision>
       <origin rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://echo_bot_description/meshes/STL/body.stl"/>
+        <mesh filename="package://echo_bot_description/meshes/DAE/body.dae"/>
       </geometry>
     </collision>
     <inertial>
@@ -56,7 +56,7 @@
     <collision>
       <origin rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://echo_bot_description/meshes/STL/upper_leg.stl"/>
+        <mesh filename="package://echo_bot_description/meshes/DAE/upper_leg.dae"/>
       </geometry>
     </collision>
     <inertial>
@@ -76,7 +76,7 @@
     <collision>
       <origin rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://echo_bot_description/meshes/STL/lower_leg.stl"/>
+        <mesh filename="package://echo_bot_description/meshes/DAE/lower_leg.dae"/>
       </geometry>
     </collision>
     <inertial>
@@ -96,7 +96,7 @@
     <collision>
       <origin rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://echo_bot_description/meshes/STL/upper_side_leg.stl"/>
+        <mesh filename="package://echo_bot_description/meshes/DAE/upper_side_leg.dae"/>
       </geometry>
     </collision>
     <inertial>
@@ -129,7 +129,7 @@
     <limit effort="0" lower="0.0" upper="-1.12975165589" velocity="0"/>
     <mimic joint="upper_leg_L" multiplier="2.123937" offset="0.003625"/>
   </joint>
-  <link name="wheel_left">
+  <link name="wheel_left_link">
     <visual>
       <origin rpy="0 0 0"/>
       <material name="wheel_color"/>
@@ -140,7 +140,7 @@
     <collision>
       <origin rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://echo_bot_description/meshes/STL/tyre.stl"/>
+        <mesh filename="package://echo_bot_description/meshes/DAE/tyre.dae"/>
       </geometry>
     </collision>
     <inertial>
@@ -149,19 +149,20 @@
       <inertia ixx="0.2015" ixy="0.0" ixz="0.0" iyy="0.265" iyz="0.0" izz="0.2015"/>
     </inertial>
   </link>
-  <joint name="wheel_left" type="continuous">
+  <joint name="wheel_left_joint" type="continuous">
     <origin rpy="-1.57079637 0.0 0.0" xyz="0.1 0.0305 0.0"/>
     <parent link="lower_leg_L"/>
-    <child link="wheel_left"/>
+    <child link="wheel_left_link"/>
     <axis xyz="0 0 1"/>
   </joint>
-  <transmission name="left_trans">
+  <transmission name="wheel_left_trans">
     <type>transmission_interface/SimpleTransmission</type>
-    <joint name="left">
-      <hardwareInterface>VelocityJointInterface</hardwareInterface>
+    <joint name="wheel_left_joint">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
     </joint>
-    <actuator name="left_motor">
-      <hardwareInterface>VelocityJointInterface</hardwareInterface>
+    <actuator name="wheel_left_motor">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+      <mechanicalReduction>30</mechanicalReduction>
     </actuator>
   </transmission>
   <!-- == right_leg == -->
@@ -170,7 +171,7 @@
   <!-- == Gazebo == -->
   <gazebo>
     <plugin filename="libgazebo_ros_control.so" name="gazebo_ros_control">
-      <robotNamespace>echo_bot</robotNamespace>
+      <!-- <robotNamespace>echo_bot</robotNamespace> -->
     </plugin>
   </gazebo>
   <gazebo reference="base_link">
@@ -178,7 +179,22 @@
     <mu1 value="0.05"/>
     <mu2 value="0.05"/>
   </gazebo>
-  <gazebo reference="left_wheel_link">
+  <gazebo reference="upper_leg_L">
+    <selfCollide>true</selfCollide>
+    <mu1 value="0.8"/>
+    <mu2 value="0.8"/>
+  </gazebo>
+  <gazebo reference="lower_leg_L">
+    <selfCollide>true</selfCollide>
+    <mu1 value="0.8"/>
+    <mu2 value="0.8"/>
+  </gazebo>
+  <gazebo reference="upper_side_leg_L">
+    <selfCollide>true</selfCollide>
+    <mu1 value="0.8"/>
+    <mu2 value="0.8"/>
+  </gazebo>
+  <gazebo reference="wheel_left_link">
     <selfCollide>true</selfCollide>
     <mu1 value="0.8"/>
     <mu2 value="0.8"/>
