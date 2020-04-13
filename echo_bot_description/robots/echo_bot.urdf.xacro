@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<robot name="echo_bot" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find echo_bot_description)/urdf/common.xacro"/>
+  <xacro:include filename="$(find echo_bot_description)/urdf/base/echo_bot_base.urdf.xacro"/>
+  <xacro:include filename="$(find echo_bot_description)/urdf/leg/echo_bot_left_leg.urdf.xacro"/>
+  <xacro:include filename="$(find echo_bot_description)/urdf/wheel/echo_bot_wheel.urdf.xacro"/>
+
+  <!-- == echo_bot base == -->
+  <link name="base_footprint"/>
+  <xacro:base_v0 parent="base_footprint">
+  <origin xyz="0 0 0.090"/>
+  </xacro:base_v0>
+
+  <!-- == left_leg == -->
+  <xacro:left_leg_v0 parent="base_link">
+    <origin xyz="0.0 0.0475 0.0" rpy="0.0 ${M_PI*160/180} 0.0"/>
+  </xacro:left_leg_v0>
+
+  <!-- == left_wheel == -->
+  <xacro:wheel_v0 prefix="left" parent="lower_leg_left">
+    <origin xyz="0.1 0.0305 0.0" rpy="${-M_PI/2} 0.0 0.0"/>
+    <axis xyz="0 0 1"/>
+  </xacro:wheel_v0>
+  <xacro:wheel_trans_v0 prefix="left"/>
+
+  <!-- == right_leg == -->
+
+  <!-- == Sensor == -->
+
+  <!-- == Gazebo == -->
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <!-- <robotNamespace>echo_bot</robotNamespace> -->
+    </plugin>
+  </gazebo>
+
+  <!-- Base -->
+  <xacro:base_gazebo_v0/>
+
+  <!-- Left leg -->
+  <xacro:left_leg_gazebo_v0/>
+  
+  <!-- Wheel -->
+  <xacro:wheel_gazebo_v0 prefix="left"/>
+  
+</robot>

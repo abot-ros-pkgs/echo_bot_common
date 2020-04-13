@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <!-- == Material == -->
+  <material name="base_color">
+    <color rgba="0.3 0.3 0.3 1"/>
+  </material>
+
+  <xacro:include filename="$(find echo_bot_description)/urdf/base/echo_bot_base.gazebo.xacro"/>
+
+  <xacro:macro name="base_v0" params="parent *joint_origin">
+    <link name="base_link">
+      <visual>
+        <origin rpy="0 0 0"/>
+        <material name="base_color"/>
+        <geometry>
+          <mesh filename="package://echo_bot_description/meshes/STL/body.stl"/>
+        </geometry>
+      </visual>
+      <collision>
+        <origin rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://echo_bot_description/meshes/DAE/body.dae"/>
+        </geometry>      
+      </collision>
+      <inertial>
+        <mass value="1e-05" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
+      </inertial>
+    </link>
+
+    <joint name="base_link_joint" type="fixed">
+      <insert_block name="joint_origin"/>
+      <parent link="${parent}"/>
+      <child link="base_link"/>
+    </joint>
+  </xacro:macro>
+
+</robot>
