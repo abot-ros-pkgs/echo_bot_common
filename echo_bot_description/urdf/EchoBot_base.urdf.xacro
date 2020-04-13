@@ -12,12 +12,12 @@
   </joint>
 
   <!-- == Body == -->
-  <xacro:include filename="$(find echo_bot_description)/urdf/EchoBot_body.urdf.xacro"/>
+  <xacro:include filename="$(find echo_bot_description)/urdf/body/EchoBot_body.urdf.xacro"/>
 
   <!-- == left_leg == -->
-  <xacro:include filename="$(find echo_bot_description)/urdf/EchoBot_left_leg.urdf.xacro"/>
+  <xacro:include filename="$(find echo_bot_description)/urdf/leg/EchoBot_left_leg.urdf.xacro"/>
 
   <!-- == right_leg == -->
-  <!-- <xacro:include filename="$(find echo_bot_description)/urdf/EchoBot_right_leg.urdf.xacro"/> -->
+  <!-- <xacro:include filename="$(find echo_bot_description)/urdf/leg/EchoBot_right_leg.urdf.xacro"/> -->
 
 </robot>

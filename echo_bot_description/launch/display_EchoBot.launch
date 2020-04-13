@@ -1,5 +1,5 @@
 <launch>
-  <arg name="model" default="$(find echo_bot_description)/urdf/EchoBot.urdf.xacro"/>
+  <arg name="model" default="$(find echo_bot_description)/robot/EchoBot.urdf.xacro"/>
 
   <arg name="gui" default="True" />
   <arg name="rviz_config" default="$(find echo_bot_description)/launch/config/display.rviz"/>
@@ -11,5 +11,4 @@
 
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher"/>
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rviz_config)"/>
-
 </launch>

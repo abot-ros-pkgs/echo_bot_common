@@ -6,5 +6,11 @@
   
   <!-- == Sensor == -->
   <!-- <xacro:include filename="$(find echo_bot_description)/urdf/SENSOR.urdf.xacro"/> -->
+
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>EchoBot</robotNamespace>
+    </plugin>
+  </gazebo>
   
 </robot>

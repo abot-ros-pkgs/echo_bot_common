@@ -67,27 +67,6 @@
       <inertia ixx="0.2015" ixy="0.0" ixz="0.0" iyy="0.265" iyz="0.0" izz="0.2015" />
     </inertial>
   </link>
-  <link name="TYRE_R">
-    <visual>
-      <origin rpy="0 0 0"/>
-      <material name="leg_color_0"/>
-      <geometry>
-        <mesh filename="package://echo_bot_description/meshes/STL/tyre.stl"/>
-      </geometry>
-    </visual>
-    <collision>
-      <origin rpy="0 0 0"/>
-      <geometry>
-        <mesh filename="package://echo_bot_description/meshes/STL/tyre.stl"/>
-      </geometry>      
-    </collision>
-    <inertial>
-      <mass value="13.25" />
-      <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
-      <inertia ixx="0.2015" ixy="0.0" ixz="0.0" iyy="0.265" iyz="0.0" izz="0.2015" />
-    </inertial>
-  </link>
-
 
   <!-- Joint -->
   <joint name="upper_leg_R" type="revolute">
@@ -114,12 +93,14 @@
     <limit lower="0.0" upper="${-M_PI*64.73/180}" effort="0" velocity="0"/>
     <mimic joint="upper_leg_R" multiplier="2.123937" offset="0.003625"/>
   </joint>
-  <joint name="TYRE_R" type="continuous">
-    <origin xyz="0.1 0.0305 0.0" rpy="${-M_PI/2} 0.0 0.0" />
-    <parent link="lower_leg_R" />
-    <child link="TYRE_R" />
+
+  <xacro:include filename="$(find echo_bot_description)/urdf/wheel/EchoBot_wheel.urdf.xacro"/>
+  <xacro:include filename="$(find echo_bot_description)/urdf/wheel/EchoBot_wheel.transmission.xacro"/>
+  <xacro:include filename="$(find echo_bot_description)/urdf/wheel/EchoBot_wheel.gazebo.xacro"/>
+
+  <xacro:wheel_v0 prefix="left" parent="lower_leg_R">
+    <origin xyz="0.1 0.0305 0.0" rpy="${-M_PI/2} 0.0 0.0"/>
     <axis xyz="0 0 1"/>
-  </joint>
-  <!-- <xacro:joint_velocity_trans_v0 name="TYRE_R"/> -->
+  </xacro:wheel_v0>
 
 </robot>
