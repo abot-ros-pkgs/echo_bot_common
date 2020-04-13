@@ -1,11 +1,32 @@
 <?xml version="1.0"?>
 <robot name="echo_bot" xmlns:xacro="http://ros.org/wiki/xacro">
-  
-  <!-- == echo_bot base == -->
-  <xacro:include filename="$(find echo_bot_description)/urdf/echo_bot_base.urdf.xacro"/>
-  
-  <!-- == Sensor == -->
+
+  <xacro:include filename="$(find echo_bot_description)/urdf/common.xacro"/>
+  <xacro:include filename="$(find echo_bot_description)/urdf/base/echo_bot_base.urdf.xacro"/>
+  <xacro:include filename="$(find echo_bot_description)/urdf/leg/echo_bot_left_leg.urdf.xacro"/>
+  <xacro:include filename="$(find echo_bot_description)/urdf/wheel/echo_bot_wheel.urdf.xacro"/>
   <!-- <xacro:include filename="$(find echo_bot_description)/urdf/SENSOR.urdf.xacro"/> -->
+
+  <!-- == echo_bot base == -->
+  <link name="base_footprint"/>
+  <xacro:base_v0 parent="base_footprint">
+  <origin xyz="0 0 0.090"/>
+  </xacro:base_v0>
+
+  <!-- == left_leg == -->
+  <xacro:left_leg_v0 parent="base_link">
+    <origin xyz="0.0 0.0475 0.0" rpy="0.0 ${M_PI*160/180} 0.0"/>
+  </xacro:left_leg_v0>
+  <xacro:wheel_v0 prefix="left" parent="lower_leg_L">
+    <origin xyz="0.1 0.0305 0.0" rpy="${-M_PI/2} 0.0 0.0"/>
+    <axis xyz="0 0 1"/>
+  </xacro:wheel_v0>
+  <xacro:joint_velocity_trans_v0 prefix="left"/>
+
+  <!-- == right_leg == -->
+  <!-- <xacro:include filename="$(find echo_bot_description)/urdf/leg/echo_bot_right_leg.urdf.xacro"/> -->
+
+  <!-- == Sensor == -->
 
   <!-- == Gazebo == -->
   <gazebo>
@@ -18,8 +39,8 @@
   <xacro:base_gazebo_v0/>
 
   <!-- Wheel -->
-  <xacro:wheel_gazebo_v0 prefix="right"/>
   <xacro:wheel_gazebo_v0 prefix="left"/>
+  <!-- <xacro:wheel_gazebo_v0 prefix="right"/> -->
   <!-- <xacro:wheel_gazebo_control_v0 rate="25"/> -->
 
   

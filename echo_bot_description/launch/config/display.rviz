@@ -11,7 +11,6 @@ Panels:
         - /TF1/Frames1
         - /RobotModel1
         - /RobotModel1/Links1
-        - /RobotModel1/Links1/Body1
         - /RobotModel1/Links1/base_footprint1
       Splitter Ratio: 0.3836589753627777
     Tree Height: 728
@@ -64,18 +63,18 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: false
-        Body:
-          Value: false
-        TYRE_R:
-          Value: false
         base_footprint:
           Value: true
-        lower_leg_R:
+        base_link:
+          Value: true
+        lower_leg_L:
           Value: false
-        upper_leg_R:
+        upper_leg_L:
           Value: false
-        upper_side_leg_R:
+        upper_side_leg_L:
           Value: false
+        wheel_left:
+          Value: true
       Marker Scale: 1
       Name: TF
       Show Arrows: true
@@ -83,12 +82,12 @@ Visualization Manager:
       Show Names: true
       Tree:
         base_footprint:
-          Body:
-            upper_leg_R:
-              lower_leg_R:
-                TYRE_R:
+          base_link:
+            upper_leg_L:
+              lower_leg_L:
+                upper_side_leg_L:
                   {}
-                upper_side_leg_R:
+                wheel_left:
                   {}
       Update Interval: 0
       Value: true
@@ -98,35 +97,35 @@ Visualization Manager:
       Enabled: true
       Links:
         All Links Enabled: true
-        Body:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
         Expand Joint Details: false
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
-        TYRE_R:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
         base_footprint:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        lower_leg_R:
+        base_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        upper_leg_R:
+        lower_leg_L:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        upper_side_leg_R:
+        upper_leg_L:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        upper_side_leg_L:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        wheel_left:
           Alpha: 1
           Show Axes: false
           Show Trail: false

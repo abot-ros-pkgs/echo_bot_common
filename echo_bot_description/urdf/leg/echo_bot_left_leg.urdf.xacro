@@ -6,8 +6,9 @@
     <color rgba="0.3 0.3 0.3 1"/>
   </material>
 
+  <xacro:macro name="left_leg_v0" params="parent *joint_origin">
   <!-- Link -->
-  <link name="upper_leg_R">
+  <link name="upper_leg_L">
     <visual>
       <origin rpy="0 0 0"/>
       <material name="leg_color_0"/>
@@ -27,7 +28,7 @@
       <inertia ixx="0.2015" ixy="0.0" ixz="0.0" iyy="0.265" iyz="0.0" izz="0.2015" />
     </inertial>
   </link>
-  <link name="lower_leg_R">
+  <link name="lower_leg_L">
     <visual>
       <origin rpy="0 0 0"/>
       <material name="leg_color_0"/>
@@ -47,7 +48,7 @@
       <inertia ixx="0.2015" ixy="0.0" ixz="0.0" iyy="0.265" iyz="0.0" izz="0.2015" />
     </inertial>
   </link>
-  <link name="upper_side_leg_R">
+  <link name="upper_side_leg_L">
     <visual>
       <origin rpy="0 0 0"/>
       <material name="leg_color_0"/>
@@ -69,39 +70,29 @@
   </link>
 
   <!-- Joint -->
-  <joint name="upper_leg_R" type="revolute">
-    <origin xyz="0.0 0.0475 0.0" rpy="0.0 ${M_PI*160/180} 0.0" />
-    <parent link="Body" />
-    <child link="upper_leg_R" />
+  <joint name="upper_leg_L" type="revolute">
+    <insert_block name="joint_origin"/>
+    <parent link="${parent}" />
+    <child link="upper_leg_L" />
     <axis xyz="0 1 0"/>
     <limit lower="0.0" upper="${-M_PI*30/180}" effort="0" velocity="0"/>
   </joint>
-  <!-- <xacro:joint_velocity_trans_v0 name="upper_leg_R"/> -->
-  <joint name="lower_leg_R" type="revolute">
+  <joint name="lower_leg_L" type="revolute">
     <origin xyz="0.1 0.0 0.0" rpy="0.0 ${-M_PI*144.47/180} 0.0" />
-    <parent link="upper_leg_R" />
-    <child link="lower_leg_R" />
+    <parent link="upper_leg_L" />
+    <child link="lower_leg_L" />
     <axis xyz="0 1 0"/>
     <limit lower="0.0" upper="${M_PI*66.73/180}" effort="0" velocity="0"/>
-    <mimic joint="upper_leg_R" multiplier="-2.186" offset="-0.02025"/>
+    <mimic joint="upper_leg_L" multiplier="-2.186" offset="-0.02025"/>
   </joint>
-  <joint name="upper_side_leg_R" type="revolute">
+  <joint name="upper_side_leg_L" type="revolute">
     <origin xyz="-0.025 0.0 0.0" rpy="0.0 ${-M_PI*54.22/180} 0.0" />
-    <parent link="lower_leg_R" />
-    <child link="upper_side_leg_R" />
+    <parent link="lower_leg_L" />
+    <child link="upper_side_leg_L" />
     <axis xyz="0 1 0"/>
     <limit lower="0.0" upper="${-M_PI*64.73/180}" effort="0" velocity="0"/>
-    <mimic joint="upper_leg_R" multiplier="2.123937" offset="0.003625"/>
+    <mimic joint="upper_leg_L" multiplier="2.123937" offset="0.003625"/>
   </joint>
-
-  <xacro:include filename="$(find echo_bot_description)/urdf/wheel/echo_bot_wheel.urdf.xacro"/>
-
-  <xacro:wheel_v0 prefix="left" parent="lower_leg_R">
-    <origin xyz="0.1 0.0305 0.0" rpy="${-M_PI/2} 0.0 0.0"/>
-    <axis xyz="0 0 1"/>
-  </xacro:wheel_v0>
-
-  <!-- Transmission -->
-  <xacro:wheel_trans_v0 prefix="right"/>
+  </xacro:macro>
 
 </robot>
