@@ -13,9 +13,16 @@
   </xacro:base_v0>
 
   <!-- == left_leg == -->
-  <xacro:left_leg_v0 parent="base_link">
+  <xacro:leg_v0 parent="base_link" prefix="left">
     <origin xyz="0.0 0.0475 0.0" rpy="0.0 ${M_PI*160/180} 0.0"/>
-  </xacro:left_leg_v0>
+  </xacro:leg_v0>
+  <xacro:leg_trans_v0 prefix="left"/>
+
+  <!-- == right_leg == -->
+  <xacro:leg_v0 parent="base_link" prefix="right">
+    <origin xyz="0.0 -0.0475 0.0" rpy="0.0 ${M_PI*160/180} 0.0"/>
+  </xacro:leg_v0>
+  <xacro:leg_trans_v0 prefix="right"/>
 
   <!-- == left_wheel == -->
   <xacro:wheel_v0 prefix="left" parent="lower_leg_left">
@@ -24,24 +31,35 @@
   </xacro:wheel_v0>
   <xacro:wheel_trans_v0 prefix="left"/>
 
-  <!-- == right_leg == -->
+  <!-- == right_wheel == -->
+  <xacro:wheel_v0 prefix="right" parent="lower_leg_right">
+    <origin xyz="0.1 -0.0305 0.0" rpy="${-M_PI/2} 0.0 0.0"/>
+    <axis xyz="0 0 1"/>
+  </xacro:wheel_v0>
+  <xacro:wheel_trans_v0 prefix="right"/>
 
   <!-- == Sensor == -->
 
   <!-- == Gazebo == -->
   <gazebo>
     <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-      <!-- <robotNamespace>echo_bot</robotNamespace> -->
+      <robotNamespace>echo_bot</robotNamespace>
     </plugin>
   </gazebo>
+
+  <plugin name="joint_state_publisher" filename="libgazebo_ros_joint_state_publisher.so">
+    <jointName>upper_leg_left_joint, upper_leg_right_joint, wheel_left_joint, wheel_right_joint</jointName>
+  </plugin>
 
   <!-- Base -->
   <xacro:base_gazebo_v0/>
 
   <!-- Left leg -->
-  <xacro:left_leg_gazebo_v0/>
+  <xacro:leg_gazebo_v0 prefix="left"/>
+  <xacro:leg_gazebo_v0 prefix="right"/>
   
   <!-- Wheel -->
   <xacro:wheel_gazebo_v0 prefix="left"/>
+  <xacro:wheel_gazebo_v0 prefix="right"/>
   
 </robot>

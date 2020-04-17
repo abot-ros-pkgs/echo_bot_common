@@ -68,12 +68,20 @@ Visualization Manager:
           Value: true
         lower_leg_left:
           Value: false
+        lower_leg_right:
+          Value: false
         upper_leg_left:
+          Value: false
+        upper_leg_right:
           Value: false
         upper_side_leg_left:
           Value: false
+        upper_side_leg_right:
+          Value: false
         wheel_left_link:
-          Value: true
+          Value: false
+        wheel_right_link:
+          Value: false
       Marker Scale: 1
       Name: TF
       Show Arrows: true
@@ -87,6 +95,12 @@ Visualization Manager:
                 upper_side_leg_left:
                   {}
                 wheel_left_link:
+                  {}
+            upper_leg_right:
+              lower_leg_right:
+                upper_side_leg_right:
+                  {}
+                wheel_right_link:
                   {}
       Update Interval: 0
       Value: true
@@ -114,7 +128,17 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        lower_leg_right:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         upper_leg_left:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        upper_leg_right:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -124,7 +148,17 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        upper_side_leg_right:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         wheel_left_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        wheel_right_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -178,10 +212,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.2603984475135803
+      Pitch: 0.300398588180542
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 0.7203909158706665
+      Yaw: 0.7353911399841309
     Saved: ~
 Window Geometry:
   Displays:

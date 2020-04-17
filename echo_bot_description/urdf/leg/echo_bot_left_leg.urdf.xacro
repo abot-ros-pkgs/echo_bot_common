@@ -1,16 +1,17 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
-  <xacro:include filename="$(find echo_bot_description)/urdf/leg/echo_bot_left_leg.gazebo.xacro"/>
+  <xacro:include filename="$(find echo_bot_description)/urdf/leg/echo_bot_leg.transmission.xacro"/>
+  <xacro:include filename="$(find echo_bot_description)/urdf/leg/echo_bot_leg.gazebo.xacro"/>
 
   <!-- == Material == -->
   <material name="leg_color_0">
     <color rgba="0.3 0.3 0.3 1"/>
   </material>
 
-  <xacro:macro name="left_leg_v0" params="parent *joint_origin">
+  <xacro:macro name="leg_v0" params="parent prefix *joint_origin">
     <!-- Link -->
-    <link name="upper_leg_left">
+    <link name="upper_leg_${prefix}">
       <visual>
         <origin rpy="0 0 0"/>
         <material name="leg_color_0"/>
@@ -25,32 +26,36 @@
         </geometry>      
       </collision>
       <inertial>
-        <mass value="13.25" />
+        <mass value="0.109" />
         <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
-        <inertia ixx="0.2015" ixy="0.0" ixz="0.0" iyy="0.265" iyz="0.0" izz="0.2015" />
+        <inertia  ixx="0.000068" ixy="0.0" ixz="0.0" 
+                  iyy="0.000086" iyz="0.0" 
+                  izz="0.000136" />
       </inertial>
     </link>
-    <link name="lower_leg_left">
+    <link name="lower_leg_${prefix}">
       <visual>
         <origin rpy="0 0 0"/>
         <material name="leg_color_0"/>
         <geometry>
-          <mesh filename="package://echo_bot_description/meshes/STL/lower_leg.stl"/>
+          <mesh filename="package://echo_bot_description/meshes/STL/lower_leg_${prefix}.stl"/>
         </geometry>
       </visual>
       <collision>
         <origin rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://echo_bot_description/meshes/DAE/lower_leg.dae"/>
+          <mesh filename="package://echo_bot_description/meshes/DAE/lower_leg_${prefix}.dae"/>
         </geometry>      
       </collision>
       <inertial>
-        <mass value="13.25" />
+        <mass value="0.152994" />
         <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
-        <inertia ixx="0.2015" ixy="0.0" ixz="0.0" iyy="0.265" iyz="0.0" izz="0.2015" />
+        <inertia  ixx="0.000046" ixy="-0.000012" ixz="-0.000001" 
+                  iyy="0.000243" iyz="0.0" 
+                  izz="0.000238" />
       </inertial>
     </link>
-    <link name="upper_side_leg_left">
+    <link name="upper_side_leg_${prefix}">
       <visual>
         <origin rpy="0 0 0"/>
         <material name="leg_color_0"/>
@@ -65,35 +70,37 @@
         </geometry>      
       </collision>
       <inertial>
-        <mass value="13.25" />
-        <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
-        <inertia ixx="0.2015" ixy="0.0" ixz="0.0" iyy="0.265" iyz="0.0" izz="0.2015" />
+        <mass value="0.041157"/>
+        <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+        <inertia  ixx="0.000003" ixy="0.0" ixz="0.0" 
+                  iyy="0.000043" iyz="0.0" 
+                  izz="0.000043"/>
       </inertial>
     </link>
 
     <!-- Joint -->
-    <joint name="upper_leg_left" type="revolute">
+    <joint name="upper_leg_${prefix}_joint" type="revolute">
       <insert_block name="joint_origin"/>
       <parent link="${parent}" />
-      <child link="upper_leg_left" />
+      <child link="upper_leg_${prefix}" />
       <axis xyz="0 1 0"/>
       <limit lower="0.0" upper="${-M_PI*30/180}" effort="0" velocity="0"/>
     </joint>
-    <joint name="lower_leg_left" type="revolute">
+    <joint name="lower_leg_${prefix}" type="revolute">
       <origin xyz="0.1 0.0 0.0" rpy="0.0 ${-M_PI*144.47/180} 0.0" />
-      <parent link="upper_leg_left" />
-      <child link="lower_leg_left" />
+      <parent link="upper_leg_${prefix}" />
+      <child link="lower_leg_${prefix}" />
       <axis xyz="0 1 0"/>
       <limit lower="0.0" upper="${M_PI*66.73/180}" effort="0" velocity="0"/>
-      <mimic joint="upper_leg_left" multiplier="-2.186" offset="-0.02025"/>
+      <mimic joint="upper_leg_${prefix}_joint" multiplier="-2.186" offset="-0.02025"/>
     </joint>
-    <joint name="upper_side_leg_left" type="revolute">
+    <joint name="upper_side_leg_${prefix}" type="revolute">
       <origin xyz="-0.025 0.0 0.0" rpy="0.0 ${-M_PI*54.22/180} 0.0" />
-      <parent link="lower_leg_left" />
-      <child link="upper_side_leg_left" />
+      <parent link="lower_leg_${prefix}" />
+      <child link="upper_side_leg_${prefix}" />
       <axis xyz="0 1 0"/>
       <limit lower="0.0" upper="${-M_PI*64.73/180}" effort="0" velocity="0"/>
-      <mimic joint="upper_leg_left" multiplier="2.123937" offset="0.003625"/>
+      <mimic joint="upper_leg_${prefix}_joint" multiplier="2.123937" offset="0.003625"/>
     </joint>
   </xacro:macro>
 
