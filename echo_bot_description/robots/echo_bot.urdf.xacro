@@ -3,7 +3,7 @@
 
   <xacro:include filename="$(find echo_bot_description)/urdf/common.xacro"/>
   <xacro:include filename="$(find echo_bot_description)/urdf/base/echo_bot_base.urdf.xacro"/>
-  <xacro:include filename="$(find echo_bot_description)/urdf/leg/echo_bot_left_leg.urdf.xacro"/>
+  <xacro:include filename="$(find echo_bot_description)/urdf/leg/echo_bot_leg.urdf.xacro"/>
   <xacro:include filename="$(find echo_bot_description)/urdf/wheel/echo_bot_wheel.urdf.xacro"/>
 
   <!-- == echo_bot base == -->
