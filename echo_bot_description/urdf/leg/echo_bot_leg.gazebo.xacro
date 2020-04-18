@@ -4,18 +4,18 @@
   <xacro:macro name="leg_gazebo_v0" params="prefix">
     <gazebo reference="upper_leg_${prefix}">
       <selfCollide>true</selfCollide>
-      <mu1 value="0.8" />
-      <mu2 value="0.8" />
+      <mu1 value="0.05" />
+      <mu2 value="0.05" />
     </gazebo>
     <gazebo reference="lower_leg_${prefix}">
       <selfCollide>true</selfCollide>
-      <mu1 value="0.8" />
-      <mu2 value="0.8" />
+      <mu1 value="0.05" />
+      <mu2 value="0.05" />
     </gazebo>
     <gazebo reference="upper_side_leg_${prefix}">
       <selfCollide>true</selfCollide>
-      <mu1 value="0.8" />
-      <mu2 value="0.8" />
+      <mu1 value="0.05" />
+      <mu2 value="0.05" />
     </gazebo>
   </xacro:macro>
 </robot>
