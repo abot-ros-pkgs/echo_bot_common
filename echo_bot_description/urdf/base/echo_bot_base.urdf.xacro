@@ -31,11 +31,23 @@
                   izz="0.009"/>
       </inertial>
     </link>
+    <link name="side_leg_left"/>
+    <link name="side_leg_right"/>
 
     <joint name="base_link_joint" type="fixed">
       <insert_block name="joint_origin"/>
       <parent link="${parent}"/>
       <child link="base_link"/>
+    </joint>
+    <joint name="side_leg_left_joint" type="fixed">
+      <origin xyz="-0.04 0.0475 0.035" rpy="0 0 0"/>
+      <parent link="base_link"/>
+      <child link="side_leg_left"/>
+    </joint>
+    <joint name="side_leg_right_joint" type="fixed">
+      <origin xyz="-0.04 -0.0475 0.035" rpy="0 0 0"/>
+      <parent link="base_link"/>
+      <child link="side_leg_right"/>
     </joint>
   </xacro:macro>
 
