@@ -15,13 +15,13 @@
         <origin rpy="0 0 0"/>
         <material name="wheel_color"/>
         <geometry>
-          <mesh filename="package://echo_bot_description/meshes/STL/tyre.stl"/>
+          <mesh filename="package://echo_bot_description/meshes/DAE/tyre.dae"/>
         </geometry>
       </visual>
       <collision>
         <origin rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://echo_bot_description/meshes/DAE/tyre.dae"/>
+          <mesh filename="package://echo_bot_description/meshes/STL/tyre.stl"/>
         </geometry>      
       </collision>
       <inertial>
