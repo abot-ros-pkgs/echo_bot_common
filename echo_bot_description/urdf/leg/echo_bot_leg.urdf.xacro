@@ -79,32 +79,26 @@
     </link>
 
     <!-- Joint -->
-    <joint name="upper_leg_${prefix}_joint" type="revolute">
+    <joint name="upper_leg_${prefix}_joint" type="continuous">
       <insert_block name="joint_origin"/>
       <parent link="${parent}" />
       <child link="upper_leg_${prefix}" />
       <axis xyz="0 1 0"/>
-      <limit lower="0.0" upper="${-M_PI*30/180}" effort="30" velocity="${M_PI}"/>
+      <!-- <limit lower="0.0" upper="${-M_PI*30/180}" effort="30" velocity="${M_PI}"/> -->
     </joint>
-    <xacro:leg_position_trans_v0 joint="upper_leg_${prefix}_joint"/>
-    <joint name="lower_leg_${prefix}" type="revolute">
+    <!-- <xacro:leg_position_trans_v0 joint="upper_leg_${prefix}_joint"/> -->
+    <joint name="lower_leg_${prefix}" type="continuous">
       <origin xyz="0.1 0.0 0.0" rpy="0.0 ${-M_PI*144.47/180} 0.0" />
       <parent link="upper_leg_${prefix}" />
       <child link="lower_leg_${prefix}" />
       <axis xyz="0 1 0"/>
-      <limit lower="0.0" upper="${M_PI*66.73/180}" effort="30" velocity="${M_PI}"/>
-      <!-- <mimic joint="upper_leg_${prefix}_joint" multiplier="-2.186" offset="-0.02025"/> -->
     </joint>
-    <xacro:leg_position_trans_v0 joint="lower_leg_${prefix}"/>
-    <joint name="upper_side_leg_${prefix}" type="revolute">
+    <joint name="upper_side_leg_${prefix}" type="continuous">
       <origin xyz="-0.025 0.0 0.0" rpy="0.0 ${-M_PI*54.22/180} 0.0" />
       <parent link="lower_leg_${prefix}" />
       <child link="upper_side_leg_${prefix}" />
       <axis xyz="0 1 0"/>
-      <limit lower="0.0" upper="${-M_PI*64.73/180}" effort="30" velocity="${M_PI}"/>
-      <!-- <mimic joint="upper_leg_${prefix}_joint" multiplier="2.123937" offset="0.003625"/> -->
     </joint>
-    <xacro:leg_position_trans_v0 joint="upper_side_leg_${prefix}"/>
   </xacro:macro>
 
 </robot>

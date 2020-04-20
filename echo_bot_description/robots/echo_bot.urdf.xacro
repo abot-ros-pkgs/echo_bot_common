@@ -7,15 +7,15 @@
   <xacro:include filename="$(find echo_bot_description)/urdf/wheel/echo_bot_wheel.urdf.xacro"/>
 
   <!-- == echo_bot base == -->
-  <link name="base_footprint"/>
+  <!-- <link name="base_footprint"/>
   <xacro:base_v0 parent="base_footprint">
   <origin xyz="0 0 0.090"/>
-  </xacro:base_v0>
+  </xacro:base_v0> -->
 
-  <!-- <link name="world"/>
+  <link name="world"/>
   <xacro:base_v0 parent="world">
   <origin xyz="0 0 0.20"/>
-  </xacro:base_v0> -->
+  </xacro:base_v0>
 
   <!-- == left_leg == -->
   <xacro:leg_v0 parent="base_link" prefix="left">
@@ -63,12 +63,12 @@
   <xacro:leg_gazebo_v0 prefix="left"/>
   <xacro:leg_gazebo_v0 prefix="right"/>
 
-  <!-- <gazebo>
+  <gazebo>
     <plugin name="left_leg_ClosedLoopPlugin" filename="libpegasus_gazebo_closed_loop_plugin.so">
       <joint>base_back_joint_left</joint>
       <child>side_leg_left</child>
-      <parent>upper_side_leg_left_opposite</parent>
-      <position>0.0 0.0 0.0</position>
+      <parent>upper_side_leg_left</parent>
+      <position>0.1 0.0 0.0</position>
       <rotation>0.00 -0.00 0.00</rotation>
     </plugin>
   </gazebo>
@@ -77,11 +77,11 @@
     <plugin name="right_leg_ClosedLoopPlugin" filename="libpegasus_gazebo_closed_loop_plugin.so">
       <joint>base_back_joint_right</joint>
       <child>side_leg_right</child>
-      <parent>upper_side_leg_right_opposite</parent>
-      <position>0.0 0.0 0.0</position>
+      <parent>upper_side_leg_right</parent>
+      <position>0.1 0.0 0.0</position>
       <rotation>0.00 -0.00 0.00</rotation>
     </plugin>
-  </gazebo> -->
+  </gazebo>
 
   <!-- Wheel -->
   <xacro:wheel_gazebo_v0 prefix="left"/>
