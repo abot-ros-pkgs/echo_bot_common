@@ -17,7 +17,11 @@
     <color rgba="0.3 0.3 0.3 1"/>
   </material>
   <!-- == echo_bot base == -->
-  <link name="base_footprint"/>
+  <!-- <link name="base_footprint"/>
+  <xacro:base_v0 parent="base_footprint">
+  <origin xyz="0 0 0.090"/>
+  </xacro:base_v0> -->
+  <link name="world"/>
   <link name="base_link">
     <visual>
       <origin rpy="0 0 0"/>
@@ -33,15 +37,67 @@
       </geometry>
     </collision>
     <inertial>
-      <mass value="1e-05"/>
+      <mass value="2.915"/>
       <origin rpy="0 0 0" xyz="0 0 0"/>
-      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+      <inertia ixx="0.006" ixy="0.0" ixz="0.002" iyy="0.008" iyz="0.0" izz="0.009"/>
+    </inertial>
+    <inertial>
+      <mass value="2.915"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="0.006" ixy="0.0" ixz="0.002" iyy="0.008" iyz="0.0" izz="0.009"/>
+    </inertial>
+    <inertial>
+      <mass value="2.915"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="0.006" ixy="0.0" ixz="0.002" iyy="0.008" iyz="0.0" izz="0.009"/>
+    </inertial>
+  </link>
+  <link name="side_leg_left">
+    <visual>
+      <geometry>
+        <box size="0.003 0.003 0.003"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <material name="red">
+        <color rgba="1.0 0.0 0.0 2.0"/>
+      </material>
+    </visual>
+    <inertial>
+      <mass value="0.005"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="4.5e-9" ixy="0.0" ixz="0.0" iyy="4.5e-9" iyz="0.0" izz="4.5e-9"/>
+    </inertial>
+  </link>
+  <link name="side_leg_right">
+    <visual>
+      <geometry>
+        <box size="0.003 0.003 0.003"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <material name="red">
+        <color rgba="1.0 0.0 0.0 2.0"/>
+      </material>
+    </visual>
+    <inertial>
+      <mass value="0.005"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="4.5e-9" ixy="0.0" ixz="0.0" iyy="4.5e-9" iyz="0.0" izz="4.5e-9"/>
     </inertial>
   </link>
   <joint name="base_link_joint" type="fixed">
-    <origin xyz="0 0 0.090"/>
-    <parent link="base_footprint"/>
+    <origin xyz="0 0 0.20"/>
+    <parent link="world"/>
     <child link="base_link"/>
+  </joint>
+  <joint name="side_leg_left_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="-0.04 0.0475 0.035"/>
+    <parent link="base_link"/>
+    <child link="side_leg_left"/>
+  </joint>
+  <joint name="side_leg_right_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="-0.04 -0.0475 0.035"/>
+    <parent link="base_link"/>
+    <child link="side_leg_right"/>
   </joint>
   <!-- Link -->
   <link name="upper_leg_left">
@@ -59,9 +115,9 @@
       </geometry>
     </collision>
     <inertial>
-      <mass value="13.25"/>
+      <mass value="0.109"/>
       <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
-      <inertia ixx="0.2015" ixy="0.0" ixz="0.0" iyy="0.265" iyz="0.0" izz="0.2015"/>
+      <inertia ixx="0.000068" ixy="0.0" ixz="0.0" iyy="0.000086" iyz="0.0" izz="0.000136"/>
     </inertial>
   </link>
   <link name="lower_leg_left">
@@ -69,19 +125,19 @@
       <origin rpy="0 0 0"/>
       <material name="leg_color_0"/>
       <geometry>
-        <mesh filename="package://echo_bot_description/meshes/STL/lower_leg.stl"/>
+        <mesh filename="package://echo_bot_description/meshes/STL/lower_leg_left.stl"/>
       </geometry>
     </visual>
     <collision>
       <origin rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://echo_bot_description/meshes/DAE/lower_leg.dae"/>
+        <mesh filename="package://echo_bot_description/meshes/DAE/lower_leg_left.dae"/>
       </geometry>
     </collision>
     <inertial>
-      <mass value="13.25"/>
+      <mass value="0.152994"/>
       <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
-      <inertia ixx="0.2015" ixy="0.0" ixz="0.0" iyy="0.265" iyz="0.0" izz="0.2015"/>
+      <inertia ixx="0.000046" ixy="-0.000012" ixz="-0.000001" iyy="0.000243" iyz="0.0" izz="0.000238"/>
     </inertial>
   </link>
   <link name="upper_side_leg_left">
@@ -99,9 +155,9 @@
       </geometry>
     </collision>
     <inertial>
-      <mass value="13.25"/>
+      <mass value="0.041157"/>
       <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
-      <inertia ixx="0.2015" ixy="0.0" ixz="0.0" iyy="0.265" iyz="0.0" izz="0.2015"/>
+      <inertia ixx="0.000003" ixy="0.0" ixz="0.0" iyy="0.000043" iyz="0.0" izz="0.000043"/>
     </inertial>
   </link>
   <!-- Joint -->
@@ -112,30 +168,47 @@
     <axis xyz="0 1 0"/>
     <limit effort="0" lower="0.0" upper="-0.52359879" velocity="0"/>
   </joint>
+  <transmission name="upper_leg_left_joint_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="upper_leg_left_joint">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="upper_leg_left_joint_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
   <joint name="lower_leg_left" type="revolute">
     <origin rpy="0.0 -2.52147723971 0.0" xyz="0.1 0.0 0.0"/>
     <parent link="upper_leg_left"/>
     <child link="lower_leg_left"/>
     <axis xyz="0 1 0"/>
     <limit effort="0" lower="0.0" upper="1.16465824189" velocity="0"/>
-    <mimic joint="upper_leg_left_joint" multiplier="-2.186" offset="-0.02025"/>
+    <!-- <mimic joint="upper_leg_${prefix}_joint" multiplier="-2.186" offset="-0.02025"/> -->
   </joint>
+  <transmission name="lower_leg_left_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="lower_leg_left">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="lower_leg_left_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
   <joint name="upper_side_leg_left" type="revolute">
     <origin rpy="0.0 -0.94631754646 0.0" xyz="-0.025 0.0 0.0"/>
     <parent link="lower_leg_left"/>
     <child link="upper_side_leg_left"/>
     <axis xyz="0 1 0"/>
     <limit effort="0" lower="0.0" upper="-1.12975165589" velocity="0"/>
-    <mimic joint="upper_leg_left_joint" multiplier="2.123937" offset="0.003625"/>
+    <!-- <mimic joint="upper_leg_${prefix}_joint" multiplier="2.123937" offset="0.003625"/> -->
   </joint>
-  <transmission name="leg_left_trans">
+  <transmission name="upper_side_leg_left_trans">
     <type>transmission_interface/SimpleTransmission</type>
-    <joint name="upper_leg_left_joint">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <joint name="upper_side_leg_left">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
     </joint>
-    <actuator name="leg_left_motor">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-      <mechanismReduction>1</mechanismReduction>
+    <actuator name="upper_side_leg_left_motor">
+      <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>
   <!-- Link -->
@@ -154,9 +227,9 @@
       </geometry>
     </collision>
     <inertial>
-      <mass value="13.25"/>
+      <mass value="0.109"/>
       <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
-      <inertia ixx="0.2015" ixy="0.0" ixz="0.0" iyy="0.265" iyz="0.0" izz="0.2015"/>
+      <inertia ixx="0.000068" ixy="0.0" ixz="0.0" iyy="0.000086" iyz="0.0" izz="0.000136"/>
     </inertial>
   </link>
   <link name="lower_leg_right">
@@ -164,19 +237,19 @@
       <origin rpy="0 0 0"/>
       <material name="leg_color_0"/>
       <geometry>
-        <mesh filename="package://echo_bot_description/meshes/STL/lower_leg.stl"/>
+        <mesh filename="package://echo_bot_description/meshes/STL/lower_leg_right.stl"/>
       </geometry>
     </visual>
     <collision>
       <origin rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://echo_bot_description/meshes/DAE/lower_leg.dae"/>
+        <mesh filename="package://echo_bot_description/meshes/DAE/lower_leg_right.dae"/>
       </geometry>
     </collision>
     <inertial>
-      <mass value="13.25"/>
+      <mass value="0.152994"/>
       <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
-      <inertia ixx="0.2015" ixy="0.0" ixz="0.0" iyy="0.265" iyz="0.0" izz="0.2015"/>
+      <inertia ixx="0.000046" ixy="-0.000012" ixz="-0.000001" iyy="0.000243" iyz="0.0" izz="0.000238"/>
     </inertial>
   </link>
   <link name="upper_side_leg_right">
@@ -194,9 +267,9 @@
       </geometry>
     </collision>
     <inertial>
-      <mass value="13.25"/>
+      <mass value="0.041157"/>
       <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
-      <inertia ixx="0.2015" ixy="0.0" ixz="0.0" iyy="0.265" iyz="0.0" izz="0.2015"/>
+      <inertia ixx="0.000003" ixy="0.0" ixz="0.0" iyy="0.000043" iyz="0.0" izz="0.000043"/>
     </inertial>
   </link>
   <!-- Joint -->
@@ -207,30 +280,47 @@
     <axis xyz="0 1 0"/>
     <limit effort="0" lower="0.0" upper="-0.52359879" velocity="0"/>
   </joint>
+  <transmission name="upper_leg_right_joint_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="upper_leg_right_joint">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="upper_leg_right_joint_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
   <joint name="lower_leg_right" type="revolute">
     <origin rpy="0.0 -2.52147723971 0.0" xyz="0.1 0.0 0.0"/>
     <parent link="upper_leg_right"/>
     <child link="lower_leg_right"/>
     <axis xyz="0 1 0"/>
     <limit effort="0" lower="0.0" upper="1.16465824189" velocity="0"/>
-    <mimic joint="upper_leg_right_joint" multiplier="-2.186" offset="-0.02025"/>
+    <!-- <mimic joint="upper_leg_${prefix}_joint" multiplier="-2.186" offset="-0.02025"/> -->
   </joint>
+  <transmission name="lower_leg_right_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="lower_leg_right">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="lower_leg_right_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
   <joint name="upper_side_leg_right" type="revolute">
     <origin rpy="0.0 -0.94631754646 0.0" xyz="-0.025 0.0 0.0"/>
     <parent link="lower_leg_right"/>
     <child link="upper_side_leg_right"/>
     <axis xyz="0 1 0"/>
     <limit effort="0" lower="0.0" upper="-1.12975165589" velocity="0"/>
-    <mimic joint="upper_leg_right_joint" multiplier="2.123937" offset="0.003625"/>
+    <!-- <mimic joint="upper_leg_${prefix}_joint" multiplier="2.123937" offset="0.003625"/> -->
   </joint>
-  <transmission name="leg_right_trans">
+  <transmission name="upper_side_leg_right_trans">
     <type>transmission_interface/SimpleTransmission</type>
-    <joint name="upper_leg_right_joint">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <joint name="upper_side_leg_right">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
     </joint>
-    <actuator name="leg_right_motor">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-      <mechanismReduction>1</mechanismReduction>
+    <actuator name="upper_side_leg_right_motor">
+      <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>
   <link name="wheel_left_link">
@@ -248,13 +338,13 @@
       </geometry>
     </collision>
     <inertial>
-      <mass value="13.25"/>
+      <mass value="0.039831"/>
       <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
-      <inertia ixx="0.2015" ixy="0.0" ixz="0.0" iyy="0.265" iyz="0.0" izz="0.2015"/>
+      <inertia ixx="0.000008" ixy="0.0" ixz="0.0" iyy="0.000008" iyz="0.0" izz="0.000015"/>
     </inertial>
   </link>
   <joint name="wheel_left_joint" type="continuous">
-    <origin rpy="-1.57079637 0.0 0.0" xyz="0.1 0.0305 0.0"/>
+    <origin rpy="-1.57079637 0.0 3.14159274" xyz="0.1 0.0305 0.0"/>
     <parent link="lower_leg_left"/>
     <child link="wheel_left_link"/>
     <axis xyz="0 0 1"/>
@@ -284,9 +374,9 @@
       </geometry>
     </collision>
     <inertial>
-      <mass value="13.25"/>
+      <mass value="0.039831"/>
       <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
-      <inertia ixx="0.2015" ixy="0.0" ixz="0.0" iyy="0.265" iyz="0.0" izz="0.2015"/>
+      <inertia ixx="0.000008" ixy="0.0" ixz="0.0" iyy="0.000008" iyz="0.0" izz="0.000015"/>
     </inertial>
   </link>
   <joint name="wheel_right_joint" type="continuous">
@@ -305,7 +395,6 @@
       <mechanicalReduction>30</mechanicalReduction>
     </actuator>
   </transmission>
-  <!-- == right_leg == -->
   <!-- == Sensor == -->
   <!-- == Gazebo == -->
   <gazebo>
@@ -315,41 +404,75 @@
       <legacyModeNS>true</legacyModeNS>
     </plugin>
   </gazebo>
+  <plugin filename="libgazebo_ros_joint_state_publisher.so" name="joint_state_publisher">
+    <jointName>upper_leg_left_joint, upper_leg_right_joint, wheel_left_joint, wheel_right_joint</jointName>
+  </plugin>
   <gazebo reference="base_link">
     <selfCollide>true</selfCollide>
     <mu1 value="0.05"/>
     <mu2 value="0.05"/>
   </gazebo>
+  <gazebo reference="side_leg_left">
+    <selfCollide>false</selfCollide>
+    <mu1 value="0.05"/>
+    <mu2 value="0.05"/>
+    <material>Gazebo/Red</material>
+  </gazebo>
+  <gazebo reference="side_leg_right">
+    <selfCollide>false</selfCollide>
+    <mu1 value="0.05"/>
+    <mu2 value="0.05"/>
+    <material>Gazebo/Red</material>
+  </gazebo>
   <gazebo reference="upper_leg_left">
     <selfCollide>true</selfCollide>
-    <mu1 value="0.8"/>
-    <mu2 value="0.8"/>
+    <mu1 value="0.05"/>
+    <mu2 value="0.05"/>
   </gazebo>
   <gazebo reference="lower_leg_left">
     <selfCollide>true</selfCollide>
-    <mu1 value="0.8"/>
-    <mu2 value="0.8"/>
+    <mu1 value="0.05"/>
+    <mu2 value="0.05"/>
   </gazebo>
   <gazebo reference="upper_side_leg_left">
     <selfCollide>true</selfCollide>
-    <mu1 value="0.8"/>
-    <mu2 value="0.8"/>
+    <mu1 value="0.05"/>
+    <mu2 value="0.05"/>
   </gazebo>
   <gazebo reference="upper_leg_right">
     <selfCollide>true</selfCollide>
-    <mu1 value="0.8"/>
-    <mu2 value="0.8"/>
+    <mu1 value="0.05"/>
+    <mu2 value="0.05"/>
   </gazebo>
   <gazebo reference="lower_leg_right">
     <selfCollide>true</selfCollide>
-    <mu1 value="0.8"/>
-    <mu2 value="0.8"/>
+    <mu1 value="0.05"/>
+    <mu2 value="0.05"/>
   </gazebo>
   <gazebo reference="upper_side_leg_right">
     <selfCollide>true</selfCollide>
-    <mu1 value="0.8"/>
-    <mu2 value="0.8"/>
+    <mu1 value="0.05"/>
+    <mu2 value="0.05"/>
   </gazebo>
+  <!-- <gazebo>
+    <plugin name="left_leg_ClosedLoopPlugin" filename="libpegasus_gazebo_closed_loop_plugin.so">
+      <joint>base_back_joint_left</joint>
+      <child>side_leg_left</child>
+      <parent>upper_side_leg_left_opposite</parent>
+      <position>0.0 0.0 0.0</position>
+      <rotation>0.00 -0.00 0.00</rotation>
+    </plugin>
+  </gazebo>
+
+  <gazebo>
+    <plugin name="right_leg_ClosedLoopPlugin" filename="libpegasus_gazebo_closed_loop_plugin.so">
+      <joint>base_back_joint_right</joint>
+      <child>side_leg_right</child>
+      <parent>upper_side_leg_right_opposite</parent>
+      <position>0.0 0.0 0.0</position>
+      <rotation>0.00 -0.00 0.00</rotation>
+    </plugin>
+  </gazebo> -->
   <gazebo reference="wheel_left_link">
     <selfCollide>true</selfCollide>
     <mu1 value="0.8"/>
