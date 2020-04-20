@@ -2,25 +2,25 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
   <!-- == Material == -->
-  <material name="base_color">
+  <material name="torso_color">
     <color rgba="0.3 0.3 0.3 1"/>
   </material>
 
-  <xacro:include filename="$(find echo_bot_description)/urdf/base/echo_bot_base.gazebo.xacro"/>
+  <xacro:include filename="$(find echo_bot_description)/urdf/torso/echo_bot_torso.gazebo.xacro"/>
 
-  <xacro:macro name="base_v0" params="parent *joint_origin">
-    <link name="base_link">
+  <xacro:macro name="torso_v0" params="parent *joint_origin">
+    <link name="torso_link">
       <visual>
         <origin rpy="0 0 0"/>
-        <material name="base_color"/>
+        <material name="torso_color"/>
         <geometry>
-          <mesh filename="package://echo_bot_description/meshes/DAE/body.dae"/>
+          <mesh filename="package://echo_bot_description/meshes/DAE/torso.dae"/>
         </geometry>
       </visual>
       <collision>
         <origin rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://echo_bot_description/meshes/STL/body.stl"/>
+          <mesh filename="package://echo_bot_description/meshes/STL/torso.stl"/>
         </geometry>      
       </collision>
       <inertial>
@@ -35,8 +35,9 @@
     <joint name="base_link_joint" type="fixed">
       <insert_block name="joint_origin"/>
       <parent link="${parent}"/>
-      <child link="base_link"/>
+      <child link="torso_link"/>
     </joint>
+
   </xacro:macro>
 
 </robot>
