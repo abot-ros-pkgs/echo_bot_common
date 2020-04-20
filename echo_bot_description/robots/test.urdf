@@ -12,28 +12,20 @@
   <material name="leg_color_0">
     <color rgba="0.3 0.3 0.3 1"/>
   </material>
-  <!-- == Material == -->
-  <material name="wheel_color">
-    <color rgba="0.3 0.3 0.3 1"/>
-  </material>
   <!-- == echo_bot base == -->
-  <!-- <link name="base_footprint"/>
-  <xacro:base_v0 parent="base_footprint">
-  <origin xyz="0 0 0.090"/>
-  </xacro:base_v0> -->
-  <link name="world"/>
+  <link name="base_footprint"/>
   <link name="base_link">
     <visual>
       <origin rpy="0 0 0"/>
       <material name="base_color"/>
       <geometry>
-        <mesh filename="package://echo_bot_description/meshes/STL/body.stl"/>
+        <mesh filename="package://echo_bot_description/meshes/DAE/body.dae"/>
       </geometry>
     </visual>
     <collision>
       <origin rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://echo_bot_description/meshes/DAE/body.dae"/>
+        <mesh filename="package://echo_bot_description/meshes/STL/body.stl"/>
       </geometry>
     </collision>
     <inertial>
@@ -41,77 +33,29 @@
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <inertia ixx="0.006" ixy="0.0" ixz="0.002" iyy="0.008" iyz="0.0" izz="0.009"/>
     </inertial>
-    <inertial>
-      <mass value="2.915"/>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
-      <inertia ixx="0.006" ixy="0.0" ixz="0.002" iyy="0.008" iyz="0.0" izz="0.009"/>
-    </inertial>
-    <inertial>
-      <mass value="2.915"/>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
-      <inertia ixx="0.006" ixy="0.0" ixz="0.002" iyy="0.008" iyz="0.0" izz="0.009"/>
-    </inertial>
-  </link>
-  <link name="side_leg_left">
-    <visual>
-      <geometry>
-        <box size="0.003 0.003 0.003"/>
-      </geometry>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
-      <material name="red">
-        <color rgba="1.0 0.0 0.0 2.0"/>
-      </material>
-    </visual>
-    <inertial>
-      <mass value="0.005"/>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
-      <inertia ixx="4.5e-9" ixy="0.0" ixz="0.0" iyy="4.5e-9" iyz="0.0" izz="4.5e-9"/>
-    </inertial>
-  </link>
-  <link name="side_leg_right">
-    <visual>
-      <geometry>
-        <box size="0.003 0.003 0.003"/>
-      </geometry>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
-      <material name="red">
-        <color rgba="1.0 0.0 0.0 2.0"/>
-      </material>
-    </visual>
-    <inertial>
-      <mass value="0.005"/>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
-      <inertia ixx="4.5e-9" ixy="0.0" ixz="0.0" iyy="4.5e-9" iyz="0.0" izz="4.5e-9"/>
-    </inertial>
   </link>
   <joint name="base_link_joint" type="fixed">
-    <origin xyz="0 0 0.20"/>
-    <parent link="world"/>
+    <origin xyz="0 0 0.090"/>
+    <parent link="base_footprint"/>
     <child link="base_link"/>
   </joint>
-  <joint name="side_leg_left_joint" type="fixed">
-    <origin rpy="0 0 0" xyz="-0.04 0.0475 0.035"/>
-    <parent link="base_link"/>
-    <child link="side_leg_left"/>
-  </joint>
-  <joint name="side_leg_right_joint" type="fixed">
-    <origin rpy="0 0 0" xyz="-0.04 -0.0475 0.035"/>
-    <parent link="base_link"/>
-    <child link="side_leg_right"/>
-  </joint>
+  <!-- <link name="world"/>
+  <xacro:base_v0 parent="world">
+  <origin xyz="0 0 0.20"/>
+  </xacro:base_v0> -->
   <!-- Link -->
   <link name="upper_leg_left">
     <visual>
       <origin rpy="0 0 0"/>
       <material name="leg_color_0"/>
       <geometry>
-        <mesh filename="package://echo_bot_description/meshes/STL/upper_leg.stl"/>
+        <mesh filename="package://echo_bot_description/meshes/DAE/upper_leg.dae"/>
       </geometry>
     </visual>
     <collision>
       <origin rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://echo_bot_description/meshes/DAE/upper_leg.dae"/>
+        <mesh filename="package://echo_bot_description/meshes/STL/upper_leg.stl"/>
       </geometry>
     </collision>
     <inertial>
@@ -125,13 +69,13 @@
       <origin rpy="0 0 0"/>
       <material name="leg_color_0"/>
       <geometry>
-        <mesh filename="package://echo_bot_description/meshes/STL/lower_leg_left.stl"/>
+        <mesh filename="package://echo_bot_description/meshes/DAE/lower_leg_left.dae"/>
       </geometry>
     </visual>
     <collision>
       <origin rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://echo_bot_description/meshes/DAE/lower_leg_left.dae"/>
+        <mesh filename="package://echo_bot_description/meshes/STL/lower_leg_left.stl"/>
       </geometry>
     </collision>
     <inertial>
@@ -145,13 +89,13 @@
       <origin rpy="0 0 0"/>
       <material name="leg_color_0"/>
       <geometry>
-        <mesh filename="package://echo_bot_description/meshes/STL/upper_side_leg.stl"/>
+        <mesh filename="package://echo_bot_description/meshes/DAE/upper_side_leg.dae"/>
       </geometry>
     </visual>
     <collision>
       <origin rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://echo_bot_description/meshes/DAE/upper_side_leg.dae"/>
+        <mesh filename="package://echo_bot_description/meshes/STL/upper_side_leg.stl"/>
       </geometry>
     </collision>
     <inertial>
@@ -166,7 +110,7 @@
     <parent link="base_link"/>
     <child link="upper_leg_left"/>
     <axis xyz="0 1 0"/>
-    <limit effort="0" lower="0.0" upper="-0.52359879" velocity="0"/>
+    <limit effort="30" lower="0.0" upper="-0.52359879" velocity="3.14159274"/>
   </joint>
   <transmission name="upper_leg_left_joint_trans">
     <type>transmission_interface/SimpleTransmission</type>
@@ -182,7 +126,7 @@
     <parent link="upper_leg_left"/>
     <child link="lower_leg_left"/>
     <axis xyz="0 1 0"/>
-    <limit effort="0" lower="0.0" upper="1.16465824189" velocity="0"/>
+    <limit effort="30" lower="0.0" upper="1.16465824189" velocity="3.14159274"/>
     <!-- <mimic joint="upper_leg_${prefix}_joint" multiplier="-2.186" offset="-0.02025"/> -->
   </joint>
   <transmission name="lower_leg_left_trans">
@@ -199,7 +143,7 @@
     <parent link="lower_leg_left"/>
     <child link="upper_side_leg_left"/>
     <axis xyz="0 1 0"/>
-    <limit effort="0" lower="0.0" upper="-1.12975165589" velocity="0"/>
+    <limit effort="30" lower="0.0" upper="-1.12975165589" velocity="3.14159274"/>
     <!-- <mimic joint="upper_leg_${prefix}_joint" multiplier="2.123937" offset="0.003625"/> -->
   </joint>
   <transmission name="upper_side_leg_left_trans">
@@ -217,13 +161,13 @@
       <origin rpy="0 0 0"/>
       <material name="leg_color_0"/>
       <geometry>
-        <mesh filename="package://echo_bot_description/meshes/STL/upper_leg.stl"/>
+        <mesh filename="package://echo_bot_description/meshes/DAE/upper_leg.dae"/>
       </geometry>
     </visual>
     <collision>
       <origin rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://echo_bot_description/meshes/DAE/upper_leg.dae"/>
+        <mesh filename="package://echo_bot_description/meshes/STL/upper_leg.stl"/>
       </geometry>
     </collision>
     <inertial>
@@ -237,13 +181,13 @@
       <origin rpy="0 0 0"/>
       <material name="leg_color_0"/>
       <geometry>
-        <mesh filename="package://echo_bot_description/meshes/STL/lower_leg_right.stl"/>
+        <mesh filename="package://echo_bot_description/meshes/DAE/lower_leg_right.dae"/>
       </geometry>
     </visual>
     <collision>
       <origin rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://echo_bot_description/meshes/DAE/lower_leg_right.dae"/>
+        <mesh filename="package://echo_bot_description/meshes/STL/lower_leg_right.stl"/>
       </geometry>
     </collision>
     <inertial>
@@ -257,13 +201,13 @@
       <origin rpy="0 0 0"/>
       <material name="leg_color_0"/>
       <geometry>
-        <mesh filename="package://echo_bot_description/meshes/STL/upper_side_leg.stl"/>
+        <mesh filename="package://echo_bot_description/meshes/DAE/upper_side_leg.dae"/>
       </geometry>
     </visual>
     <collision>
       <origin rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://echo_bot_description/meshes/DAE/upper_side_leg.dae"/>
+        <mesh filename="package://echo_bot_description/meshes/STL/upper_side_leg.stl"/>
       </geometry>
     </collision>
     <inertial>
@@ -278,7 +222,7 @@
     <parent link="base_link"/>
     <child link="upper_leg_right"/>
     <axis xyz="0 1 0"/>
-    <limit effort="0" lower="0.0" upper="-0.52359879" velocity="0"/>
+    <limit effort="30" lower="0.0" upper="-0.52359879" velocity="3.14159274"/>
   </joint>
   <transmission name="upper_leg_right_joint_trans">
     <type>transmission_interface/SimpleTransmission</type>
@@ -294,7 +238,7 @@
     <parent link="upper_leg_right"/>
     <child link="lower_leg_right"/>
     <axis xyz="0 1 0"/>
-    <limit effort="0" lower="0.0" upper="1.16465824189" velocity="0"/>
+    <limit effort="30" lower="0.0" upper="1.16465824189" velocity="3.14159274"/>
     <!-- <mimic joint="upper_leg_${prefix}_joint" multiplier="-2.186" offset="-0.02025"/> -->
   </joint>
   <transmission name="lower_leg_right_trans">
@@ -311,7 +255,7 @@
     <parent link="lower_leg_right"/>
     <child link="upper_side_leg_right"/>
     <axis xyz="0 1 0"/>
-    <limit effort="0" lower="0.0" upper="-1.12975165589" velocity="0"/>
+    <limit effort="30" lower="0.0" upper="-1.12975165589" velocity="3.14159274"/>
     <!-- <mimic joint="upper_leg_${prefix}_joint" multiplier="2.123937" offset="0.003625"/> -->
   </joint>
   <transmission name="upper_side_leg_right_trans">
@@ -325,22 +269,19 @@
   </transmission>
   <link name="wheel_left_link">
     <visual>
-      <origin rpy="0 0 0"/>
-      <material name="wheel_color"/>
-      <geometry>
-        <mesh filename="package://echo_bot_description/meshes/STL/tyre.stl"/>
-      </geometry>
-    </visual>
-    <collision>
-      <origin rpy="0 0 0"/>
       <geometry>
         <mesh filename="package://echo_bot_description/meshes/DAE/tyre.dae"/>
       </geometry>
+    </visual>
+    <collision>
+      <origin rpy="-1.57079637 0 0" xyz="0 -0.003 0"/>
+      <geometry>
+        <cylinder length="0.02" radius="0.029"/>
+      </geometry>
     </collision>
     <inertial>
-      <mass value="0.039831"/>
       <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
-      <inertia ixx="0.000008" ixy="0.0" ixz="0.0" iyy="0.000008" iyz="0.0" izz="0.000015"/>
+      <cylinder_inertial length="0.02" mass="0.039831" radius="0.029"/>
     </inertial>
   </link>
   <joint name="wheel_left_joint" type="continuous">
@@ -348,6 +289,8 @@
     <parent link="lower_leg_left"/>
     <child link="wheel_left_link"/>
     <axis xyz="0 0 1"/>
+    <limit effort="0.4" velocity="12.0"/>
+    <dynamics damping="0.1"/>
   </joint>
   <transmission name="wheel_left_trans">
     <type>transmission_interface/SimpleTransmission</type>
@@ -356,27 +299,24 @@
     </joint>
     <actuator name="wheel_left_motor">
       <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
-      <mechanicalReduction>30</mechanicalReduction>
+      <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>
   <link name="wheel_right_link">
     <visual>
-      <origin rpy="0 0 0"/>
-      <material name="wheel_color"/>
-      <geometry>
-        <mesh filename="package://echo_bot_description/meshes/STL/tyre.stl"/>
-      </geometry>
-    </visual>
-    <collision>
-      <origin rpy="0 0 0"/>
       <geometry>
         <mesh filename="package://echo_bot_description/meshes/DAE/tyre.dae"/>
       </geometry>
+    </visual>
+    <collision>
+      <origin rpy="-1.57079637 0 0" xyz="0 -0.003 0"/>
+      <geometry>
+        <cylinder length="0.02" radius="0.029"/>
+      </geometry>
     </collision>
     <inertial>
-      <mass value="0.039831"/>
       <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
-      <inertia ixx="0.000008" ixy="0.0" ixz="0.0" iyy="0.000008" iyz="0.0" izz="0.000015"/>
+      <cylinder_inertial length="0.02" mass="0.039831" radius="0.029"/>
     </inertial>
   </link>
   <joint name="wheel_right_joint" type="continuous">
@@ -384,6 +324,8 @@
     <parent link="lower_leg_right"/>
     <child link="wheel_right_link"/>
     <axis xyz="0 0 1"/>
+    <limit effort="0.4" velocity="12.0"/>
+    <dynamics damping="0.1"/>
   </joint>
   <transmission name="wheel_right_trans">
     <type>transmission_interface/SimpleTransmission</type>
@@ -392,7 +334,7 @@
     </joint>
     <actuator name="wheel_right_motor">
       <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
-      <mechanicalReduction>30</mechanicalReduction>
+      <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>
   <!-- == Sensor == -->
@@ -411,18 +353,6 @@
     <selfCollide>true</selfCollide>
     <mu1 value="0.05"/>
     <mu2 value="0.05"/>
-  </gazebo>
-  <gazebo reference="side_leg_left">
-    <selfCollide>false</selfCollide>
-    <mu1 value="0.05"/>
-    <mu2 value="0.05"/>
-    <material>Gazebo/Red</material>
-  </gazebo>
-  <gazebo reference="side_leg_right">
-    <selfCollide>false</selfCollide>
-    <mu1 value="0.05"/>
-    <mu2 value="0.05"/>
-    <material>Gazebo/Red</material>
   </gazebo>
   <gazebo reference="upper_leg_left">
     <selfCollide>true</selfCollide>
@@ -475,13 +405,21 @@
   </gazebo> -->
   <gazebo reference="wheel_left_link">
     <selfCollide>true</selfCollide>
-    <mu1 value="0.8"/>
-    <mu2 value="0.8"/>
+    <!-- <mu1 value="0.8" />
+      <mu2 value="0.8" /> -->
+    <mu1 value="2.5"/>
+    <mu2 value="2.5"/>
+    <kp value="50000"/>
+    <kd value="10"/>
   </gazebo>
   <gazebo reference="wheel_right_link">
     <selfCollide>true</selfCollide>
-    <mu1 value="0.8"/>
-    <mu2 value="0.8"/>
+    <!-- <mu1 value="0.8" />
+      <mu2 value="0.8" /> -->
+    <mu1 value="2.5"/>
+    <mu2 value="2.5"/>
+    <kp value="50000"/>
+    <kd value="10"/>
   </gazebo>
 </robot>
 

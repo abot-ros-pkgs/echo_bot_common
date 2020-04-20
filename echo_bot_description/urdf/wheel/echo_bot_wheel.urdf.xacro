@@ -1,35 +1,39 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
-<xacro:include filename="$(find echo_bot_description)/urdf/wheel/echo_bot_wheel.transmission.xacro"/>
-<xacro:include filename="$(find echo_bot_description)/urdf/wheel/echo_bot_wheel.gazebo.xacro"/>
+  <xacro:include filename="$(find echo_bot_description)/urdf/wheel/echo_bot_wheel.transmission.xacro"/>
+  <xacro:include filename="$(find echo_bot_description)/urdf/wheel/echo_bot_wheel.gazebo.xacro"/>
 
-  <!-- == Material == -->
-  <material name="wheel_color">
-    <color rgba="0.3 0.3 0.3 1"/>
-  </material>
+  <property name="wheel_radius" value="0.029"/>
+  <property name="wheel_length" value="0.012"/>
+  <property name="wheel_mass" value="0.039831"/>
+
+
+  <xacro:macro name="cylinder_inertial" params="mass radius length">
+    <mass value="${mass}"/>
+    <inertia  ixx="${((radius*radius)/4 + (length*length)/12)*mass}" ixy="0" ixz="0"
+              iyy="${((radius*radius)/4 + (length*length)/12)*mass}" iyz="0"
+              izz="${(mass*radius*radius)/2}" />
+  </xacro:macro>
 
   <xacro:macro name="wheel_v0" params="prefix parent *joint_origin *joint_axis">
     <link name="wheel_${prefix}_link">
       <visual>
-        <origin rpy="0 0 0"/>
-        <material name="wheel_color"/>
         <geometry>
           <mesh filename="package://echo_bot_description/meshes/DAE/tyre.dae"/>
         </geometry>
       </visual>
       <collision>
-        <origin rpy="0 0 0"/>
+        <!-- <origin xyz="0 -0.003 0" rpy="${-M_PI/2} 0 0"/> -->
+        <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://echo_bot_description/meshes/STL/tyre.stl"/>
+          <cylinder radius="${wheel_radius}" length="${wheel_length}"/>
         </geometry>      
       </collision>
       <inertial>
-        <mass value="0.039831"/>
         <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
-        <inertia  ixx="0.000008" ixy="0.0" ixz="0.0" 
-                  iyy="0.000008" iyz="0.0" 
-                  izz="0.000015"/>
+        <cylinder_inertial  mass="${wheel_mass}"
+                            radius="${wheel_radius}" length="${wheel_length}"/>
       </inertial>
     </link>
 
@@ -38,6 +42,8 @@
       <parent link="${parent}" />
       <child link="wheel_${prefix}_link"/>
       <insert_block name="joint_axis"/>
+      <limit velocity="12.0" effort="0.4" />
+      <dynamics damping="0.1"/>
     </joint>
   </xacro:macro>
 </robot>
